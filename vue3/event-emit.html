@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 컴포넌트 표시 -->
+      <app-contents></app-contents>
+    </div>
+
+    <script>
+      const appContents = {
+        template: `
+          <p>
+            <button v-on:click="sendEvent">갱신</button>  
+          </p>
+        `,
+        methods: {
+          sendEvent() {
+            console.log('123');
+            this.$emit('refresh');
+          },
+        },
+      };
+
+      Vue.createApp({
+        data() {
+          return {};
+        },
+        components: {
+          'app-contents': appContents,
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
