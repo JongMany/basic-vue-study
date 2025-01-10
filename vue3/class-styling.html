@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .primary {
+        color: coral;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- class binding -->
+      <h1>클래스 바인딩</h1>
+      <div v-bind:class="textClass">데이터 바인딩 예제</div>
+
+      <!-- id binding -->
+      <h1>아이디 바인딩</h1>
+      <section v-bind:id="sectionId">반갑습니다.</section>
+      <!-- :로 v-bind를 축약 -->
+      <section :id="sectionId" style="color: red">반갑습니다.</section>
+    </div>
+
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            textClass: 'primary',
+            sectionId: 'tab1',
+          };
+        },
+      }).mount('#app');
+
+      Vue.Component('');
+    </script>
+  </body>
+</html>
