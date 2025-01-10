@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const data = {
+        message: 10,
+      };
+
+      function render(something) {
+        const root = document.querySelector('#app');
+
+        root.innerHTML = something;
+      }
+
+      const app = new Proxy(data, {
+        get() {},
+        set(target, prop, newValue) {
+          render(newValue);
+          target[prop] = newValue;
+        },
+      });
+    </script>
+  </body>
+</html>
