@@ -14,22 +14,47 @@
 
 <script>
 import axios from 'axios';
+import { ref } from 'vue';
 export default {
-  data() {
-    return {
-      username: '',
-      password: '',
-    };
-  },
-  methods: {
-    async submitForm() {
-      // event.preventDefault();
+  //   data() {
+  //     return {
+  //       username: '',
+  //       password: '',
+  //     };
+  //   },
+  //   methods: {
+  //     async submitForm() {
+  //       // event.preventDefault();
+  //       try {
+  //         const response = await axios.post(
+  //           'https://jsonplaceholder.typicode.com/users',
+  //           {
+  //             username: this.username,
+  //             password: this.password,
+  //           },
+  //         );
+
+  //         if (response.status === 201) {
+  //           alert('로그인 성공');
+  //         }
+  //       } catch (error) {
+  //         console.error(error);
+  //       }
+  //     },
+  //   },
+  setup() {
+    // data
+    const username = ref('');
+    const password = ref('');
+
+    //methods
+    const submitForm = async () => {
       try {
         const response = await axios.post(
           'https://jsonplaceholder.typicode.com/users',
           {
-            username: this.username,
-            password: this.password,
+            username: username.value,
+            password: password.value,
           },
         );
 
@@ -39,7 +64,13 @@ export default {
       } catch (error) {
         console.error(error);
       }
-    },
+    };
+
+    return {
+      username,
+      password,
+      submitForm,
+    };
   },
 };
 </script>
